@@ -26,14 +26,24 @@ public class Program2 {
 		}
 		
 		System.out.println("\n=== TESTE department insert === ");
-		System.out.println("Enter the name of Department: ");
-		String nameDep = sc.next();
-		Department newDepartment = new Department(null, nameDep);
+		Department newDepartment = new Department(null, "Sociology II");
 		departmentDao.insert(newDepartment);
 		System.out.println("Inserted new Department = " + newDepartment.getId());
 	
+		System.out.println("\n=== TESTE department update === ");
+		newDepartment = departmentDao.findById(4); 
+		newDepartment.setName("Economics III");
+		departmentDao.update(newDepartment);
+		System.out.println("Update executed! ");
+		
+		System.out.println("\n=== TESTE department delete === ");
+		System.out.println("Enter id for delete test: ");
+		int id = sc.nextInt();
+		departmentDao.deleteById(id);
+		System.out.println("Delete completed ");
+		
 		sc.close();
-	
+			
 	}
 
 }
